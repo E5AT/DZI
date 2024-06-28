@@ -11,32 +11,47 @@ namespace Zad28
         public string firstName, lastName, id;
         public Person(string fName, string lName, string ID)
         {
-            firstName = fName;
-            lastName = lName;
-            if (ID.Length == 10) id = ID;
-            else Console.WriteLine($"{fName} {lName} - invalid identifier!");
+            try
+            {
+                firstName = fName;
+                lastName = lName;
+                if (ID.Length == 10) id = ID;
+                else throw new Exception($"{fName} {lName} - invalid identifier!");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
     class Kid : Person
     {
+
         public int age;
         public string group, parentLastName, parentGSM;
 
-       public Kid(string fName, string lName, string ID, int age, string parentName, string GSM ) : base(fName, lName, ID)
+        public Kid(string fName, string lName, string ID, int age, string parentName, string GSM) : base(fName, lName, ID)
         {
-            parentLastName = parentName;
-            parentGSM = GSM;
-
-            switch (age)
+            try
             {
-                case 3: group = "1-ва група"; this.age = age; break;
-                case 4: group = "2-ра група"; this.age = age; break;
-                case 5: group = "3-та група"; this.age = age; break;
-                case 6: group = "4-та група"; this.age = age; break;
-                default: throw new Exception($"The child {firstName} {lastName} age is invalid - {age}"); break;
+                parentLastName = parentName;
+                parentGSM = GSM;
+
+                switch (age)
+                {
+                    case 3: group = "1-ва група"; this.age = age; break;
+                    case 4: group = "2-ра група"; this.age = age; break;
+                    case 5: group = "3-та група"; this.age = age; break;
+                    case 6: group = "4-та група"; this.age = age; break;
+                    default: throw new Exception($"The child {firstName} {lastName} age is invalid - {age}");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
             }
 
-            
+
         }
 
         public override string ToString()
@@ -62,7 +77,7 @@ namespace Zad28
         public void ReleaseKid(string id)
         {
             Kid kid = kidList.Find(k => k.id == id);
-            if (kid !=null)
+            if (kid != null)
             {
                 kidList.Remove(kid);
                 Console.WriteLine($"The child {kid.firstName} {kid.lastName} has been unsubscribed.");
@@ -71,17 +86,17 @@ namespace Zad28
         }
         public void GroupInfo(int i)
         {
-                List<Kid> kidGarden = new List<Kid>();
-                for(int j = 0; j < kidGarden.Count; j++)
-                {
-                    if (kidList[i].group.Contains(i.ToString()))
-                        kidGarden.Add(kidList[i]);
-                }
-                Console.WriteLine($"{i} group - {kidGarden.Count} children");
+            List<Kid> kidGarden = new List<Kid>();
+            for (int j = 0; j < kidGarden.Count; j++)
+            {
+                if (kidList[i].group.Contains(i.ToString()))
+                    kidGarden.Add(kidList[i]);
+            }
+            Console.WriteLine($"{i} group - {kidGarden.Count} children");
 
-                kidGarden.OrderBy(k => k.firstName).ThenBy(k => k.lastName);
-                foreach (Kid kid in kidGarden)
-                    Console.WriteLine(kid.ToString());
+            kidGarden.OrderBy(k => k.firstName).ThenBy(k => k.lastName);
+            foreach (Kid kid in kidGarden)
+                Console.WriteLine(kid.ToString());
         }
     }
     class Program
@@ -115,7 +130,7 @@ namespace Zad28
                 }
             } while (words[0] != "END");
 
-            
+
         }
     }
 }

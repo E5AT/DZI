@@ -1,6 +1,0 @@
-E:\DZI\2023\2\Zad25\Zad25\bin\Debug\Zad25.exe.config
-E:\DZI\2023\2\Zad25\Zad25\bin\Debug\Zad25.exe
-E:\DZI\2023\2\Zad25\Zad25\bin\Debug\Zad25.pdb
-E:\DZI\2023\2\Zad25\Zad25\obj\Debug\Zad25.csprojResolveAssemblyReference.cache
-E:\DZI\2023\2\Zad25\Zad25\obj\Debug\Zad25.exe
-E:\DZI\2023\2\Zad25\Zad25\obj\Debug\Zad25.pdb
